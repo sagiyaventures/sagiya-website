@@ -1,0 +1,48 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#fff8f6"/>
+
+  <!-- Left green accent bar -->
+  <rect width="8" height="630" fill="#004900"/>
+
+  <!-- Top-right decorative dots grid -->
+  <g fill="#004900" opacity="0.08">
+    <circle cx="1050" cy="80" r="4"/><circle cx="1080" cy="80" r="4"/><circle cx="1110" cy="80" r="4"/><circle cx="1140" cy="80" r="4"/>
+    <circle cx="1050" cy="110" r="4"/><circle cx="1080" cy="110" r="4"/><circle cx="1110" cy="110" r="4"/><circle cx="1140" cy="110" r="4"/>
+    <circle cx="1050" cy="140" r="4"/><circle cx="1080" cy="140" r="4"/><circle cx="1110" cy="140" r="4"/><circle cx="1140" cy="140" r="4"/>
+    <circle cx="1050" cy="170" r="4"/><circle cx="1080" cy="170" r="4"/><circle cx="1110" cy="170" r="4"/><circle cx="1140" cy="170" r="4"/>
+  </g>
+
+  <!-- Bottom-left decorative dots -->
+  <g fill="#004900" opacity="0.06">
+    <circle cx="60" cy="480" r="4"/><circle cx="90" cy="480" r="4"/><circle cx="120" cy="480" r="4"/>
+    <circle cx="60" cy="510" r="4"/><circle cx="90" cy="510" r="4"/><circle cx="120" cy="510" r="4"/>
+    <circle cx="60" cy="540" r="4"/><circle cx="90" cy="540" r="4"/><circle cx="120" cy="540" r="4"/>
+  </g>
+
+  <!-- Large background circle (decorative) -->
+  <circle cx="950" cy="380" r="260" fill="#004900" opacity="0.04"/>
+
+  <!-- Company name -->
+  <text x="80" y="240" font-size="72" font-weight="800" fill="#004900" letter-spacing="-1">Sagiya Ventures</text>
+
+  <!-- Tagline -->
+  <text x="82" y="300" font-size="28" font-weight="400" fill="#5a6b55" letter-spacing="1">AI &amp; Software Solutions</text>
+
+  <!-- Divider line -->
+  <rect x="80" y="330" width="120" height="4" rx="2" fill="#004900"/>
+
+  <!-- Description -->
+  <text x="80" y="390" font-size="22" fill="#444" font-weight="300">Custom AI Development · Data Analytics</text>
+  <text x="80" y="425" font-size="22" fill="#444" font-weight="300">Workflow Automation · Computer Vision</text>
+
+  <!-- Location pill -->
+  <rect x="80" y="470" width="260" height="44" rx="22" fill="#004900"/>
+  <text x="210" y="498" font-size="18" fill="#ffffff" font-weight="500" text-anchor="middle">Tamil Nadu, India</text>
+
+  <!-- Website -->
+  <text x="80" y="580" font-size="20" fill="#5a6b55" font-weight="400">www.sagiyaventures.com</text>
+
+  <!-- Bottom border -->
+  <rect x="0" y="620" width="1200" height="10" fill="#004900"/>
+</svg>
