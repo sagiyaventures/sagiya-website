@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Cpu, Zap, Gauge, ShieldCheck, ArrowRight, CheckCircle2, Microscope, Sparkles } from 'lucide-react';
+import photonicsHero from '../assets/photonics-hero.svg';
 
 interface PhotonicsViewProps {
   onOpenConsultation: () => void;
@@ -60,46 +61,68 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
           <div className="absolute top-1/3 right-[10%] w-[320px] h-[320px] bg-[#006400]/10 rounded-full blur-[90px]" />
         </div>
 
-        <div className="relative max-w-[1000px] mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ffdbd0]/30 border border-[#bfcab7] text-[#004900] font-label text-xs font-semibold mb-6 tracking-wide uppercase"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            Pre-Seed · Patent Filed · Pre-Silicon (Simulation Stage)
-          </motion.div>
+        <div className="relative max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          <div className="lg:col-span-7 text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ffdbd0]/30 border border-[#bfcab7] text-[#004900] font-label text-xs font-semibold mb-6 tracking-wide uppercase"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              Pre-Seed · Patent Filed · Pre-Silicon (Simulation Stage)
+            </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-headline text-4xl md:text-6xl font-bold mb-5 tracking-tight text-[#2c160e]"
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-headline text-4xl md:text-6xl font-bold mb-5 tracking-tight text-[#2c160e]"
+            >
+              Sagiya <span className="text-[#006400]">Photonics</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-body text-xl md:text-2xl text-[#006400] mb-7 font-medium"
+            >
+              AI Inference at the Speed of Light
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="font-body text-base md:text-lg text-[#404a3b] max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+            >
+              A photonic AI accelerator chip (PPU) that performs matrix-vector multiplication using
+              light through silicon waveguides — instead of electrons through transistors. In
+              simulation, our PPU-v16 design targets <strong className="text-[#2c160e]">5.12 TOPS at
+              0.82–1.26 TOPS/W</strong>, ahead of NVIDIA A100's measured 0.78 TOPS/W. The chip design
+              is complete and tape-out ready; it has not yet been fabricated or measured on real
+              silicon.
+            </motion.p>
+          </div>
+
+          {/* Right Column: Photonic Chip Illustration */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="lg:col-span-5 relative h-[280px] sm:h-[320px] lg:h-[360px] flex items-center justify-center"
           >
-            Sagiya <span className="text-[#006400]">Photonics</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-body text-xl md:text-2xl text-[#006400] mb-7 font-medium"
-          >
-            AI Inference at the Speed of Light
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="font-body text-base md:text-lg text-[#404a3b] max-w-2xl mx-auto leading-relaxed"
-          >
-            A photonic AI accelerator chip (PPU) that performs matrix-vector multiplication using
-            light through silicon waveguides — instead of electrons through transistors. In
-            simulation, our PPU-v16 design targets <strong className="text-[#2c160e]">5.12 TOPS at
-            0.82–1.26 TOPS/W</strong>, ahead of NVIDIA A100's measured 0.78 TOPS/W. The chip design
-            is complete and tape-out ready; it has not yet been fabricated or measured on real
-            silicon.
-          </motion.p>
+            <div className="relative w-full h-full rounded-2xl border border-[#006400]/15 overflow-hidden shadow-sm bg-[#f0f8f0]">
+              <img
+                src={photonicsHero}
+                alt="Sagiya PPU — photonic AI accelerator chip with light-based waveguide mesh"
+                className="w-full h-full object-contain p-4"
+                loading="lazy"
+                width={720}
+                height={720}
+              />
+            </div>
+            <div className="absolute -z-10 w-full h-full bg-gradient-to-tr from-[#ffe2da] to-transparent rounded-full blur-3xl opacity-50 scale-110 translate-x-8 translate-y-8 pointer-events-none" />
+          </motion.div>
         </div>
       </section>
 
