@@ -27,7 +27,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab, onOpenConsultatio
             </p>
             <p className="font-label text-xs text-[#707a6a]">
               Sagiya Ventures Private Limited<br />
-              Tamil Nadu, India
+              Tamil Nadu, India<br />
+              <a href="tel:+919790097716" className="hover:text-[#006400] transition-colors">
+                +91 97900 97716
+              </a>
             </p>
           </div>
 
@@ -65,6 +68,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab, onOpenConsultatio
             <p className="font-body text-sm text-[#404a3b] mb-4 leading-relaxed">
               Interested in working with us? We'd love to hear about your project.
             </p>
+            <a
+              href="tel:+919790097716"
+              className="font-label text-sm text-[#404a3b] hover:text-[#006400] transition-colors block mb-4"
+            >
+              📞 +91 97900 97716
+            </a>
             <button
               onClick={onOpenConsultation}
               className="inline-flex items-center gap-2 bg-[#006400] text-white font-label text-sm font-semibold px-5 py-2.5 rounded-sm hover:bg-[#004d00] transition-colors"

@@ -18,6 +18,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
     timeline: 'Within 3 Months',
     fullName: '',
     email: '',
+    phone: '',
     organization: '',
     projectNotes: '',
   });
@@ -59,6 +60,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
         body: JSON.stringify({
           name: formData.fullName,
           email: formData.email,
+          phone: formData.phone,
           organization: formData.organization,
           domain: formData.domain,
           scale: formData.scale,
@@ -81,7 +83,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
   const handleReset = () => {
     setIsSubmitted(false);
     setStep(1);
-    setFormData({ domain: 'AI Solutions & Automation', scale: 'Small to Medium Organization', timeline: 'Within 3 Months', fullName: '', email: '', organization: '', projectNotes: '' });
+    setFormData({ domain: 'AI Solutions & Automation', scale: 'Small to Medium Organization', timeline: 'Within 3 Months', fullName: '', email: '', phone: '', organization: '', projectNotes: '' });
     onClose();
   };
 
@@ -185,12 +187,21 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                       className="w-full px-3.5 py-2.5 rounded border border-stone-300 focus:border-[#006400] focus:ring-1 focus:ring-[#006400] text-sm outline-none" />
                   </div>
                 </div>
-                <div>
-                  <label className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Organization / Company</label>
-                  <input type="text" value={formData.organization}
-                    onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                    placeholder="e.g. TNSTC, Tamil Nadu Govt, ABC Pvt Ltd"
-                    className="w-full px-3.5 py-2.5 rounded border border-stone-300 focus:border-[#006400] focus:ring-1 focus:ring-[#006400] text-sm outline-none" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Phone Number</label>
+                    <input type="tel" value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="e.g. 9790097716"
+                      className="w-full px-3.5 py-2.5 rounded border border-stone-300 focus:border-[#006400] focus:ring-1 focus:ring-[#006400] text-sm outline-none" />
+                  </div>
+                  <div>
+                    <label className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Organization / Company</label>
+                    <input type="text" value={formData.organization}
+                      onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                      placeholder="e.g. TNSTC, Tamil Nadu Govt, ABC Pvt Ltd"
+                      className="w-full px-3.5 py-2.5 rounded border border-stone-300 focus:border-[#006400] focus:ring-1 focus:ring-[#006400] text-sm outline-none" />
+                  </div>
                 </div>
                 <div>
                   <label className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Tell us about your project (Optional)</label>
