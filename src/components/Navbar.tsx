@@ -62,20 +62,15 @@ export const Navbar: React.FC<NavbarProps> = ({
         <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
-            const isPhotonics = item.id === 'photonics';
             return (
               <button
                 key={item.id}
                 id={`nav-link-${item.id}`}
                 onClick={() => handleNavClick(item.id)}
                 className={`font-label text-[14px] tracking-wide transition-all duration-200 cursor-pointer ${
-                  isPhotonics
-                    ? isActive
-                      ? 'text-[#0A0A1A] font-semibold border-b-2 border-[#00A8CC] pb-1'
-                      : 'text-[#1A5276] hover:text-[#00A8CC] font-medium'
-                    : isActive
-                      ? 'text-[#004900] font-semibold border-b-2 border-[#004900] pb-1'
-                      : 'text-[#404a3b] hover:text-[#004900] font-medium'
+                  isActive
+                    ? 'text-[#004900] font-semibold border-b-2 border-[#004900] pb-1'
+                    : 'text-[#404a3b] hover:text-[#004900] font-medium'
                 }`}
               >
                 {item.label}
@@ -110,27 +105,20 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#fff8f6] border-b border-[#004900]/10 px-6 py-5 shadow-lg animate-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col gap-4">
-            {navItems.map((item) => {
-              const isPhotonics = item.id === 'photonics';
-              return (
-                <button
-                  key={item.id}
-                  id={`mobile-nav-${item.id}`}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`text-left text-base py-2 px-3 rounded-md transition-colors ${
-                    isPhotonics
-                      ? activeTab === item.id
-                        ? 'bg-[#0A0A1A]/10 text-[#0A0A1A] font-semibold'
-                        : 'text-[#1A5276] hover:bg-[#0A0A1A]/5'
-                      : activeTab === item.id
-                        ? 'bg-[#006400]/10 text-[#004900] font-semibold'
-                        : 'text-[#404a3b] hover:bg-[#ffdbd0]/20'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                id={`mobile-nav-${item.id}`}
+                onClick={() => handleNavClick(item.id)}
+                className={`text-left text-base py-2 px-3 rounded-md transition-colors ${
+                  activeTab === item.id
+                    ? 'bg-[#006400]/10 text-[#004900] font-semibold'
+                    : 'text-[#404a3b] hover:bg-[#ffdbd0]/20'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
             <div className="pt-2 border-t border-[#004900]/10">
               <button
                 id="mobile-nav-consult-cta"
