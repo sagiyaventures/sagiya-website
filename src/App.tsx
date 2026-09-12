@@ -13,6 +13,7 @@ import { AIServicesView } from './components/AIServicesView';
 import { InfrastructureView } from './components/InfrastructureView';
 import { AboutUsView } from './components/AboutUsView';
 import { CaseStudiesView } from './components/CaseStudiesView';
+import { PhotonicsView } from './components/PhotonicsView';
 import { Footer } from './components/Footer';
 import { ConsultationModal } from './components/ConsultationModal';
 import { ArchitectureModal } from './components/ArchitectureModal';
@@ -27,6 +28,7 @@ const VALID_TABS: NavigationTab[] = [
   'infrastructure',
   'about',
   'case-studies',
+  'photonics',
   'privacy-policy',
   'terms-of-service',
 ];
@@ -121,6 +123,12 @@ export default function App() {
 
         {activeTab === 'case-studies' && (
           <CaseStudiesView
+            onOpenConsultation={() => setIsConsultationOpen(true)}
+          />
+        )}
+
+        {activeTab === 'photonics' && (
+          <PhotonicsView
             onOpenConsultation={() => setIsConsultationOpen(true)}
           />
         )}

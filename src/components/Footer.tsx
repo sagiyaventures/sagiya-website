@@ -46,6 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab, onOpenConsultatio
                 { label: 'Infrastructure', tab: 'infrastructure' },
                 { label: 'About Us', tab: 'about' },
                 { label: 'Pilot Projects', tab: 'case-studies' },
+                { label: 'Sagiya Photonics', tab: 'photonics' },
                 { label: 'Privacy Policy', tab: 'privacy-policy' },
                 { label: 'Terms of Service', tab: 'terms-of-service' },
               ].map(({ label, tab }) => (

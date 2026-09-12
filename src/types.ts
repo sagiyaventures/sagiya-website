@@ -4,6 +4,7 @@ export type NavigationTab =
   | 'infrastructure'
   | 'about'
   | 'case-studies'
+  | 'photonics'
   | 'privacy-policy'
   | 'terms-of-service';
 
