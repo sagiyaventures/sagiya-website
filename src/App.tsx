@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { NavigationTab } from './types';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -21,18 +21,56 @@ import { NotFoundView } from './components/NotFoundView';
 import { PrivacyPolicyView } from './components/PrivacyPolicyView';
 import { TermsOfServiceView } from './components/TermsOfServiceView';
 
+const VALID_TABS: NavigationTab[] = [
+  'solutions',
+  'ai-services',
+  'infrastructure',
+  'about',
+  'case-studies',
+  'privacy-policy',
+  'terms-of-service',
+];
+
+function tabFromHash(): NavigationTab {
+  const hash = window.location.hash.replace('#', '');
+  return (VALID_TABS as string[]).includes(hash) ? (hash as NavigationTab) : 'solutions';
+}
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<NavigationTab>('solutions');
+  // SEO fix: honour a deep-link hash on first load (e.g. /#ai-services from
+  // the sitemap or a shared link) instead of always defaulting to 'solutions'.
+  const [activeTab, setActiveTab] = useState<NavigationTab>(() => tabFromHash());
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [isArchitectureOpen, setIsArchitectureOpen] = useState(false);
   const [isTelemetryOpen, setIsTelemetryOpen] = useState(false);
+
+  // SEO/UX fix: keep the URL hash in sync with the active section so that
+  // (a) each section is shareable/bookmarkable as its own URL, and
+  // (b) the browser Back/Forward buttons move between sections instead of
+  //     leaving the site entirely.
+  const navigate = useCallback((tab: NavigationTab) => {
+    setActiveTab(tab);
+    if (window.location.hash.replace('#', '') !== tab) {
+      window.history.pushState(null, '', `#${tab}`);
+    }
+  }, []);
+
+  useEffect(() => {
+    const onHashOrPopState = () => setActiveTab(tabFromHash());
+    window.addEventListener('hashchange', onHashOrPopState);
+    window.addEventListener('popstate', onHashOrPopState);
+    return () => {
+      window.removeEventListener('hashchange', onHashOrPopState);
+      window.removeEventListener('popstate', onHashOrPopState);
+    };
+  }, []);
 
   return (
     <div className="bg-[#ffffff] text-[#2c160e] font-body min-h-screen flex flex-col selection:bg-[#006400] selection:text-[#86df72]">
       {/* Top Sticky Navigation Bar */}
       <Navbar
         activeTab={activeTab}
-        onSelectTab={setActiveTab}
+        onSelectTab={navigate}
         onOpenConsultation={() => setIsConsultationOpen(true)}
       />
 
@@ -50,7 +88,7 @@ export default function App() {
             {/* Architectural Pillars Section matching Image 2 */}
             <ArchitecturalPillars
               onNavigateTab={(tab) => {
-                setActiveTab(tab);
+                navigate(tab);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             />
@@ -88,21 +126,21 @@ export default function App() {
         )}
 
         {activeTab === 'privacy-policy' && (
-          <PrivacyPolicyView onBack={() => setActiveTab('solutions')} />
+          <PrivacyPolicyView onBack={() => navigate('solutions')} />
         )}
 
         {activeTab === 'terms-of-service' && (
-          <TermsOfServiceView onBack={() => setActiveTab('solutions')} />
+          <TermsOfServiceView onBack={() => navigate('solutions')} />
         )}
 
-        {!['solutions','ai-services','infrastructure','about','case-studies','privacy-policy','terms-of-service'].includes(activeTab) && (
-          <NotFoundView onGoHome={() => setActiveTab('solutions')} />
+        {!VALID_TABS.includes(activeTab) && (
+          <NotFoundView onGoHome={() => navigate('solutions')} />
         )}
       </main>
 
       {/* Footer matching Image 2 */}
       <Footer
-        onNavigateTab={setActiveTab}
+        onNavigateTab={navigate}
         onOpenConsultation={() => setIsConsultationOpen(true)}
       />
 
