@@ -22,11 +22,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onConsult, onViewArchi
           </div>
 
           <h1 className="font-headline text-4xl sm:text-5xl lg:text-[56px] font-bold text-[#2c160e] tracking-tight leading-tight">
-            Intelligent Software for <span className="text-[#006400]">Real-World</span> Impact.
+            Practical AI for <span className="text-[#006400]">Government &amp; Enterprise</span>.
           </h1>
 
           <p className="font-body text-lg md:text-[18px] text-[#404a3b] leading-relaxed max-w-xl">
-            Sagiya Ventures builds AI-powered software solutions for businesses and public institutions — practical, scalable, and designed to create measurable value.
+            Sagiya Ventures builds AI-powered software validated through real pilots — not slideware. Honest, measurable results for government departments and enterprises across India.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
