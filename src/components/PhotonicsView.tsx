@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Cpu, Zap, Gauge, ShieldCheck, ArrowDown, ChevronDown, CheckCircle2, FileText, Factory, Mail } from 'lucide-react';
 import { PpuDieBlueprint } from './PpuDieBlueprint';
-import photonicsCardImg from '../assets/photonics-card.png';
+import photonicsCardImg from '../assets/photonics-card.jpg';
 import {
   TELEMETRY_METRICS,
   CHIP_VARIANTS,
