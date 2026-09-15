@@ -1,4 +1,5 @@
 import React from 'react';
+import { Linkedin } from 'lucide-react';
 import sagiyaLogo from '../assets/sagiya-logo.jpeg';
 
 interface FooterProps {
@@ -32,6 +33,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab, onOpenConsultatio
                 +91 97900 97716
               </a>
             </p>
+            <a
+              href="https://www.linkedin.com/company/sagiya-ventures/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Sagiya Ventures on LinkedIn"
+              className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#ffe2da] text-[#006400] hover:bg-[#006400] hover:text-white transition-colors duration-300 mt-1"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
           </div>
 
           {/* Quick Links */}
