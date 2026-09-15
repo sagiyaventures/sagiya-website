@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Cpu, Zap, Gauge, ShieldCheck, ArrowRight, ArrowDown, CheckCircle2, FileText, Factory, Mail, Sparkles } from 'lucide-react';
 import { PpuDieBlueprint } from './PpuDieBlueprint';
+import photonicsCardImg from '../assets/photonics-card.png';
 import {
   TELEMETRY_METRICS,
   CHIP_VARIANTS,
@@ -119,7 +120,7 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
             </motion.div>
           </div>
 
-          {/* Right: Interactive Die Blueprint */}
+          {/* Right: Product Concept Render */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -128,8 +129,38 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
           >
             <div className="relative">
               <div className="absolute -inset-1.5 bg-gradient-to-r from-[#006400]/10 via-transparent to-[#ffdbd0]/30 rounded-xl blur-sm -z-10" />
-              <PpuDieBlueprint onExpand={scrollToMetrics} />
+              <div className="rounded-xl overflow-hidden border border-[#004900]/10 shadow-sm bg-[#0a1f2e]">
+                <img
+                  src={photonicsCardImg}
+                  alt="Sagiya Photonics PPU accelerator card — design concept render"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <p className="font-label text-[10px] text-[#707a6a] text-center mt-2 tracking-wide uppercase">
+                Design Concept Render — Pre-Silicon
+              </p>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section 1b — Interactive Die Explorer */}
+      <section className="py-14 md:py-16 px-5 md:px-12 border-b border-[#004900]/10 bg-[#fff8f6]">
+        <div className="max-w-[900px] mx-auto">
+          <motion.div {...fadeUp} className="text-center mb-8">
+            <span className="font-label text-xs font-bold tracking-[0.15em] uppercase text-[#006400] block mb-2">
+              INTERACTIVE
+            </span>
+            <h2 className="font-headline text-2xl md:text-3xl font-semibold text-[#2c160e]">
+              Explore the PPU Die
+            </h2>
+            <p className="font-body text-sm text-[#707a6a] mt-2">
+              Click a labeled region below to inspect its simulated specs.
+            </p>
+          </motion.div>
+          <motion.div {...fadeUp}>
+            <PpuDieBlueprint onExpand={scrollToMetrics} />
           </motion.div>
         </div>
       </section>
