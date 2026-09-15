@@ -1,5 +1,5 @@
-import React from 'react';
-import { Cpu, Zap, Gauge, ShieldCheck, ArrowDown, CheckCircle2, FileText, Factory, Mail } from 'lucide-react';
+import React, { useState } from 'react';
+import { Cpu, Zap, Gauge, ShieldCheck, ArrowDown, ChevronDown, CheckCircle2, FileText, Factory, Mail } from 'lucide-react';
 import { PpuDieBlueprint } from './PpuDieBlueprint';
 import photonicsCardImg from '../assets/photonics-card.png';
 import {
@@ -17,6 +17,8 @@ interface PhotonicsViewProps {
 const ICONS = { clock: Zap, cpu: Cpu, gauge: Gauge, yield: ShieldCheck };
 
 export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation }) => {
+  const [showDieExplorer, setShowDieExplorer] = useState(false);
+
   const scrollToMetrics = () => {
     document.getElementById('photonics-metrics')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -102,20 +104,34 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
         </div>
       </section>
 
-      {/* Interactive Die Explorer */}
+      {/* Interactive Die Explorer — collapsible */}
       <section className="mb-20">
-        <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="font-label text-xs uppercase tracking-wider text-[#006400] font-semibold">
-            Interactive
-          </span>
-          <h2 className="font-headline text-2xl sm:text-3xl font-bold text-[#2c160e] mt-1">
-            Explore the PPU Die
-          </h2>
-          <p className="font-body text-sm text-[#404a3b] mt-2">
-            Click a labeled region below to inspect its simulated specs.
-          </p>
-        </div>
-        <PpuDieBlueprint onExpand={scrollToMetrics} />
+        <button
+          onClick={() => setShowDieExplorer((v) => !v)}
+          aria-expanded={showDieExplorer}
+          className="w-full flex items-center justify-between gap-4 bg-white border border-[#004900]/15 hover:border-[#004900]/40 transition-all duration-300 shadow-xs hover:shadow-md rounded-xl p-6 md:p-7 text-left cursor-pointer"
+        >
+          <div>
+            <span className="font-label text-xs uppercase tracking-wider text-[#006400] font-semibold">
+              Interactive
+            </span>
+            <h2 className="font-headline text-2xl sm:text-3xl font-bold text-[#2c160e] mt-1">
+              Explore the PPU Die
+            </h2>
+            <p className="font-body text-sm text-[#404a3b] mt-2">
+              Click to {showDieExplorer ? 'hide' : 'view'} the labeled die diagram and inspect simulated specs.
+            </p>
+          </div>
+          <div className="shrink-0 w-11 h-11 rounded-lg bg-[#ffe2da] flex items-center justify-center text-[#006400]">
+            <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${showDieExplorer ? 'rotate-180' : ''}`} />
+          </div>
+        </button>
+
+        {showDieExplorer && (
+          <div className="mt-6 animate-in fade-in duration-300">
+            <PpuDieBlueprint onExpand={scrollToMetrics} />
+          </div>
+        )}
       </section>
 
       {/* Key Metrics */}
