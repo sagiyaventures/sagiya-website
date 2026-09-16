@@ -69,7 +69,7 @@ export const CaseStudiesView: React.FC<CaseStudiesViewProps> = ({ onOpenConsulta
 
   const statusConfig = {
     active: { label: 'Active Pilot', color: 'bg-[#fff8f6] text-[#006400] border-[#006400]/25' },
-    exploring: { label: 'Exploring', color: 'bg-[#fff1ed] text-[#a67a00] border-[#ffdbd0]' },
+    exploring: { label: 'Exploring', color: 'bg-[#fff1ed] text-[#7a5c00] border-[#ffdbd0]' },
     upcoming: { label: 'Upcoming', color: 'bg-stone-100 text-stone-600 border-stone-300' },
   };
 

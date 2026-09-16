@@ -38,7 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <button
           id="nav-brand-logo"
           onClick={() => handleNavClick('solutions')}
-          className="flex items-center gap-3 text-left focus:outline-none group transition-transform"
+          className="flex items-center gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#006400] focus-visible:ring-offset-2 rounded-lg group transition-transform"
         >
           {/* Logo in circular border */}
           <div className="relative w-12 h-12 rounded-full group-hover:scale-105 transition-all duration-200 overflow-hidden">
