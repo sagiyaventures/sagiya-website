@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, ArrowRight, ArrowLeft, Send, Loader2 } from 'lucide-react';
 
-// TODO: Replace with your Formspree form ID after signing up at https://formspree.io
-// Steps: 1) Sign up at formspree.io  2) Create new form  3) Copy the form ID (e.g. "xpwzabcd")
+// Formspree endpoint — verified working (live test submission confirmed Sep 2026).
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xljegbww';
 
 interface ConsultationModalProps {
