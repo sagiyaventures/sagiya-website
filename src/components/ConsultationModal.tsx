@@ -12,9 +12,9 @@ interface ConsultationModalProps {
 export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }) => {
   const [step, setStep] = useState<number>(1);
   const [formData, setFormData] = useState({
-    domain: 'AI Solutions & Automation',
-    scale: 'Small to Medium Organization',
-    timeline: 'Within 3 Months',
+    domain: '',
+    scale: '',
+    timeline: '',
     fullName: '',
     email: '',
     phone: '',
@@ -82,7 +82,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
   const handleReset = () => {
     setIsSubmitted(false);
     setStep(1);
-    setFormData({ domain: 'AI Solutions & Automation', scale: 'Small to Medium Organization', timeline: 'Within 3 Months', fullName: '', email: '', phone: '', organization: '', projectNotes: '' });
+    setFormData({ domain: '', scale: '', timeline: '', fullName: '', email: '', phone: '', organization: '', projectNotes: '' });
     onClose();
   };
 
@@ -133,9 +133,12 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                     ))}
                   </div>
                 </div>
-                <div className="pt-4 flex justify-end">
-                  <button type="button" onClick={() => setStep(2)}
-                    className="inline-flex items-center gap-2 bg-[#006400] text-white font-label text-sm font-semibold px-6 py-3 rounded-sm hover:bg-[#004d00] transition-colors">
+                <div className="pt-4 flex flex-col items-end gap-2">
+                  {(!formData.domain || !formData.scale) && (
+                    <p className="font-label text-xs text-[#a67a00]">Please select an option in both questions above to continue.</p>
+                  )}
+                  <button type="button" onClick={() => setStep(2)} disabled={!formData.domain || !formData.scale}
+                    className="inline-flex items-center gap-2 bg-[#006400] text-white font-label text-sm font-semibold px-6 py-3 rounded-sm hover:bg-[#004d00] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#006400]">
                     <span>Next</span><ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -157,13 +160,16 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                     ))}
                   </div>
                 </div>
-                <div className="pt-4 flex justify-between">
+                {!formData.timeline && (
+                  <p className="font-label text-xs text-[#a67a00]">Please select a timeline to continue.</p>
+                )}
+                <div className="pt-1 flex justify-between">
                   <button type="button" onClick={() => setStep(1)}
                     className="inline-flex items-center gap-2 border border-stone-300 text-stone-700 font-label text-sm px-5 py-3 rounded-sm hover:bg-stone-50">
                     <ArrowLeft className="w-4 h-4" /><span>Back</span>
                   </button>
-                  <button type="button" onClick={() => setStep(3)}
-                    className="inline-flex items-center gap-2 bg-[#006400] text-white font-label text-sm font-semibold px-6 py-3 rounded-sm hover:bg-[#004d00] transition-colors">
+                  <button type="button" onClick={() => setStep(3)} disabled={!formData.timeline}
+                    className="inline-flex items-center gap-2 bg-[#006400] text-white font-label text-sm font-semibold px-6 py-3 rounded-sm hover:bg-[#004d00] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#006400]">
                     <span>Next</span><ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -245,15 +251,15 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
             <div className="bg-[#fff8f6] border border-[#004900]/15 rounded-xl p-5 text-left max-w-sm mx-auto mb-8 text-xs font-label space-y-2">
               <div className="flex justify-between">
                 <span className="text-[#707a6a]">Contact:</span>
-                <span className="font-bold text-[#2c160e]">Rajkumar Sundar</span>
+                <span className="font-bold text-[#2c160e]">Sagiya Ventures Team</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#707a6a]">Email:</span>
                 <span className="font-bold text-[#006400]">sagiyaventures@gmail.com</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#707a6a]">Response:</span>
-                <span className="font-bold text-[#2c160e]">Within 1-2 Business Days</span>
+                <span className="text-[#707a6a]">Typical Response:</span>
+                <span className="font-bold text-[#2c160e]">1-2 Business Days</span>
               </div>
             </div>
             <button onClick={handleReset}
