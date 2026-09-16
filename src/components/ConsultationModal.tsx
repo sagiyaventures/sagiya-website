@@ -114,6 +114,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {domains.map((item) => (
                       <button key={item} type="button" onClick={() => setFormData({ ...formData, domain: item })}
+                        aria-pressed={formData.domain === item}
                         className={`p-3.5 text-left rounded-lg border font-label text-xs transition-all ${formData.domain === item ? 'bg-[#006400] text-white border-[#006400] font-semibold' : 'bg-white text-[#2c160e] border-[#004900]/15 hover:bg-[#fff8f6]'}`}>
                         {item}
                       </button>
@@ -125,6 +126,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {scales.map((item) => (
                       <button key={item} type="button" onClick={() => setFormData({ ...formData, scale: item })}
+                        aria-pressed={formData.scale === item}
                         className={`p-3.5 text-left rounded-lg border font-label text-xs transition-all ${formData.scale === item ? 'bg-[#006400] text-white border-[#006400] font-semibold' : 'bg-white text-[#2c160e] border-[#004900]/15 hover:bg-[#fff8f6]'}`}>
                         {item}
                       </button>
@@ -148,6 +150,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                   <div className="grid grid-cols-2 gap-3">
                     {timelines.map((t) => (
                       <button key={t} type="button" onClick={() => setFormData({ ...formData, timeline: t })}
+                        aria-pressed={formData.timeline === t}
                         className={`p-3.5 text-left rounded-lg border font-label text-xs transition-all ${formData.timeline === t ? 'bg-[#006400] text-white border-[#006400] font-semibold' : 'bg-white text-[#2c160e] border-[#004900]/15 hover:bg-[#fff8f6]'}`}>
                         {t}
                       </button>
@@ -172,15 +175,15 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Your Name *</label>
-                    <input type="text" required value={formData.fullName}
+                    <label htmlFor="consult-name" className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Your Name *</label>
+                    <input id="consult-name" type="text" required value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       placeholder="e.g. Rajkumar Sundar"
                       className="w-full px-3.5 py-2.5 rounded border border-stone-300 focus:border-[#006400] focus:ring-1 focus:ring-[#006400] text-sm outline-none" />
                   </div>
                   <div>
-                    <label className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Email Address *</label>
-                    <input type="email" required value={formData.email}
+                    <label htmlFor="consult-email" className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Email Address *</label>
+                    <input id="consult-email" type="email" required value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="you@organization.com"
                       className="w-full px-3.5 py-2.5 rounded border border-stone-300 focus:border-[#006400] focus:ring-1 focus:ring-[#006400] text-sm outline-none" />
@@ -188,23 +191,23 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Phone Number</label>
-                    <input type="tel" value={formData.phone}
+                    <label htmlFor="consult-phone" className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Phone Number</label>
+                    <input id="consult-phone" type="tel" value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="e.g. 9790097716"
                       className="w-full px-3.5 py-2.5 rounded border border-stone-300 focus:border-[#006400] focus:ring-1 focus:ring-[#006400] text-sm outline-none" />
                   </div>
                   <div>
-                    <label className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Organization / Company</label>
-                    <input type="text" value={formData.organization}
+                    <label htmlFor="consult-org" className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Organization / Company</label>
+                    <input id="consult-org" type="text" value={formData.organization}
                       onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                       placeholder="e.g. TNSTC, Tamil Nadu Govt, ABC Pvt Ltd"
                       className="w-full px-3.5 py-2.5 rounded border border-stone-300 focus:border-[#006400] focus:ring-1 focus:ring-[#006400] text-sm outline-none" />
                   </div>
                 </div>
                 <div>
-                  <label className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Tell us about your project (Optional)</label>
-                  <textarea rows={3} value={formData.projectNotes}
+                  <label htmlFor="consult-notes" className="block font-label text-xs font-semibold text-[#2c160e] mb-1">Tell us about your project (Optional)</label>
+                  <textarea id="consult-notes" rows={3} value={formData.projectNotes}
                     onChange={(e) => setFormData({ ...formData, projectNotes: e.target.value })}
                     placeholder="Briefly describe what you're trying to solve..."
                     className="w-full px-3.5 py-2.5 rounded border border-stone-300 focus:border-[#006400] focus:ring-1 focus:ring-[#006400] text-sm outline-none" />
