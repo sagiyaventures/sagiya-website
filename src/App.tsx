@@ -21,6 +21,8 @@ import { TelemetryModal } from './components/TelemetryModal';
 import { NotFoundView } from './components/NotFoundView';
 import { PrivacyPolicyView } from './components/PrivacyPolicyView';
 import { TermsOfServiceView } from './components/TermsOfServiceView';
+import { CookieConsent } from './components/CookieConsent';
+import { loadGoogleAnalytics } from './analytics';
 
 const VALID_TABS: NavigationTab[] = [
   'solutions',
@@ -65,6 +67,18 @@ export default function App() {
       window.removeEventListener('hashchange', onHashOrPopState);
       window.removeEventListener('popstate', onHashOrPopState);
     };
+  }, []);
+
+  // Privacy: only load Google Analytics if the visitor already accepted
+  // the cookie notice on a previous visit (see CookieConsent.tsx).
+  useEffect(() => {
+    try {
+      if (window.localStorage.getItem('sagiya-cookie-consent') === 'accepted') {
+        loadGoogleAnalytics();
+      }
+    } catch {
+      // localStorage unavailable — skip analytics rather than assume consent
+    }
   }, []);
 
   return (
@@ -171,6 +185,8 @@ export default function App() {
         isOpen={isTelemetryOpen}
         onClose={() => setIsTelemetryOpen(false)}
       />
+
+      <CookieConsent onNavigateTab={navigate} />
     </div>
   );
 }
