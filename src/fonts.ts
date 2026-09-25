@@ -22,7 +22,17 @@ export function loadFonts(): void {
 
   const stylesheets = [
     'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap',
-    'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap',
+    // Icon-subsetting fix: the unsubsetted Material Symbols variable font
+    // covers thousands of icons across 4 variable axes and is genuinely
+    // multi-megabyte - Lighthouse's "avoid enormous network payloads"
+    // finding (4.1 MB total) traced back to this one request. This site
+    // only ever renders 9 distinct icon ligatures (grep for
+    // material-symbols-outlined across src/components to get this list),
+    // so &icon_names= (Google's official Material Symbols subsetting
+    // param) fetches only those glyphs instead of the whole icon set.
+    // If you add a NEW material-symbols-outlined icon anywhere, its name
+    // MUST be added to this list too, or it will silently fail to render.
+    'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=architecture,arrow_forward,close,psychology,robot_2,shield_lock,share,smart_toy,visibility&display=swap',
   ];
 
   for (const href of stylesheets) {
