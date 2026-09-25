@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, ArrowRight, ArrowLeft, Send, Loader2 } from 'lucide-react';
+import { useEscapeClose } from '../hooks/useEscapeClose';
 
 // Formspree endpoint — verified working (live test submission confirmed Sep 2026).
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xljegbww';
@@ -24,6 +25,9 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [submitError, setSubmitError] = useState('');
+
+  // Accessibility fix: role=dialog + Escape-to-close + initial focus (see useEscapeClose).
+  const panelRef = useEscapeClose(isOpen, onClose);
 
   if (!isOpen) return null;
 
@@ -88,7 +92,14 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl border border-[#004900]/20 max-w-2xl w-full p-6 sm:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="consultation-modal-title"
+        tabIndex={-1}
+        className="bg-white rounded-2xl border border-[#004900]/20 max-w-2xl w-full p-6 sm:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto focus:outline-none"
+      >
         <button onClick={onClose} aria-label="Close" className="absolute top-5 right-5 p-2 rounded-full hover:bg-stone-100 text-stone-500 hover:text-stone-800 transition-colors">
           <X className="w-5 h-5" />
         </button>
@@ -100,7 +111,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                 <span className="w-2 h-2 rounded-full bg-[#006400]"></span>
                 Step {step} of 3
               </div>
-              <h2 className="font-headline text-2xl sm:text-3xl font-bold text-[#2c160e]">Get in Touch</h2>
+              <h2 id="consultation-modal-title" className="font-headline text-2xl sm:text-3xl font-bold text-[#2c160e]">Get in Touch</h2>
               <p className="font-body text-sm text-[#404a3b] mt-1">
                 Tell us a bit about your project — we'll get back to you soon.
               </p>
@@ -244,7 +255,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
             <div className="w-16 h-16 rounded-full bg-[#006400] text-white flex items-center justify-center mx-auto mb-5">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="font-headline text-2xl font-bold text-[#2c160e] mb-2">Message Sent!</h3>
+            <h3 id="consultation-modal-title" className="font-headline text-2xl font-bold text-[#2c160e] mb-2">Message Sent!</h3>
             <p className="font-body text-base text-[#404a3b] max-w-md mx-auto mb-6">
               Thank you, <span className="font-semibold">{formData.fullName || 'there'}</span>! We've received your message and will get back to you as soon as possible.
             </p>

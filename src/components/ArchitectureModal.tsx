@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, MessageSquare, Lightbulb, Code2, Rocket, CheckCircle2, ArrowRight } from 'lucide-react';
+import { useEscapeClose } from '../hooks/useEscapeClose';
 
 interface ArchitectureModalProps {
   isOpen: boolean;
@@ -8,6 +9,9 @@ interface ArchitectureModalProps {
 }
 
 export const ArchitectureModal: React.FC<ArchitectureModalProps> = ({ isOpen, onClose, onOpenConsultation }) => {
+  // Accessibility fix: role=dialog + Escape-to-close + initial focus (see useEscapeClose).
+  const panelRef = useEscapeClose(isOpen, onClose);
+
   if (!isOpen) return null;
 
   const steps = [
@@ -47,8 +51,15 @@ export const ArchitectureModal: React.FC<ArchitectureModalProps> = ({ isOpen, on
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl border border-[#004900]/20 max-w-2xl w-full p-6 sm:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-        <button onClick={onClose} className="absolute top-5 right-5 p-2 rounded-full hover:bg-stone-100 text-stone-500 hover:text-stone-800 transition-colors">
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="architecture-modal-title"
+        tabIndex={-1}
+        className="bg-white rounded-2xl border border-[#004900]/20 max-w-2xl w-full p-6 sm:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto focus:outline-none"
+      >
+        <button onClick={onClose} aria-label="Close" className="absolute top-5 right-5 p-2 rounded-full hover:bg-stone-100 text-stone-500 hover:text-stone-800 transition-colors">
           <X className="w-5 h-5" />
         </button>
 
@@ -58,7 +69,7 @@ export const ArchitectureModal: React.FC<ArchitectureModalProps> = ({ isOpen, on
             <span className="w-2 h-2 rounded-full bg-[#006400]"></span>
             How We Work
           </div>
-          <h2 className="font-headline text-2xl sm:text-3xl font-bold text-[#2c160e]">Our Approach</h2>
+          <h2 id="architecture-modal-title" className="font-headline text-2xl sm:text-3xl font-bold text-[#2c160e]">Our Approach</h2>
           <p className="font-body text-sm text-[#404a3b] mt-1 leading-relaxed">
             Simple, transparent, and focused on delivering real value — from the first conversation to live deployment.
           </p>

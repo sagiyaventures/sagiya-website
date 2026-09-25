@@ -4,7 +4,8 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import sagiyaLogo from '../assets/sagiya-logo.jpeg';
 
 interface NavbarProps {
-  activeTab: NavigationTab;
+  // null when on the 404 state (unrecognized hash) - no nav item should look active then
+  activeTab: NavigationTab | null;
   onSelectTab: (tab: NavigationTab) => void;
   onOpenConsultation: () => void;
 }

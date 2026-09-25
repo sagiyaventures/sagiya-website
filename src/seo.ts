@@ -17,7 +17,11 @@ import { NavigationTab } from './types';
 interface SeoEntry {
   title: string;
   description: string;
+  /** Absolute URL. Omit to fall back to the site-wide default OG image. */
+  image?: string;
 }
+
+const DEFAULT_OG_IMAGE = 'https://www.sagiyaventures.com/og-image.png';
 
 export const SEO_BY_TAB: Record<NavigationTab, SeoEntry> = {
   solutions: {
@@ -43,6 +47,7 @@ export const SEO_BY_TAB: Record<NavigationTab, SeoEntry> = {
   photonics: {
     title: 'Sagiya Photonics | Photonic AI Processing Unit (PPU) for Light-Speed Inference',
     description: 'Sagiya Photonics is developing a Photonic Processing Unit (PPU) that performs AI matrix-vector multiplication by guiding light through silicon photonic interferometer meshes.',
+    image: 'https://www.sagiyaventures.com/photonics-og.jpg',
   },
   'privacy-policy': {
     title: 'Privacy Policy — Sagiya Ventures',
@@ -54,8 +59,20 @@ export const SEO_BY_TAB: Record<NavigationTab, SeoEntry> = {
   },
 };
 
-export function applySeoForTab(tab: NavigationTab): void {
-  const entry = SEO_BY_TAB[tab] ?? SEO_BY_TAB.solutions;
+const NOT_FOUND_ENTRY: SeoEntry = {
+  title: 'Page Not Found — Sagiya Ventures',
+  description: 'The page you are looking for does not exist or may have been moved.',
+};
+
+/**
+ * @param tab The active section, or `null` for an unrecognized hash (404
+ * state — see NotFoundView / App.tsx). A 404 is marked `noindex` so an
+ * old or mistyped link never gets indexed as real content, and every
+ * valid section restores `index, follow` in case the visitor previously
+ * hit a 404 in the same session (SPA navigation never reloads the page).
+ */
+export function applySeoForTab(tab: NavigationTab | null): void {
+  const entry = tab === null ? NOT_FOUND_ENTRY : SEO_BY_TAB[tab] ?? SEO_BY_TAB.solutions;
 
   document.title = entry.title;
 
@@ -69,9 +86,12 @@ export function applySeoForTab(tab: NavigationTab): void {
   setMeta('meta[property="og:description"]', 'content', entry.description);
   setMeta('meta[name="twitter:title"]', 'content', entry.title);
   setMeta('meta[name="twitter:description"]', 'content', entry.description);
+  setMeta('meta[property="og:image"]', 'content', entry.image ?? DEFAULT_OG_IMAGE);
+  setMeta('meta[name="twitter:image"]', 'content', entry.image ?? DEFAULT_OG_IMAGE);
+  setMeta('meta[name="robots"]', 'content', tab === null ? 'noindex, follow' : 'index, follow');
 
   const canonicalUrl =
-    tab === 'solutions'
+    tab === null || tab === 'solutions'
       ? 'https://www.sagiyaventures.com/'
       : `https://www.sagiyaventures.com/#${tab}`;
   setMeta('link[rel="canonical"]', 'href', canonicalUrl);

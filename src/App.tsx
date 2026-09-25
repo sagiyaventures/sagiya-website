@@ -36,15 +36,20 @@ const VALID_TABS: NavigationTab[] = [
   'terms-of-service',
 ];
 
-function tabFromHash(): NavigationTab {
+function tabFromHash(): NavigationTab | null {
   const hash = window.location.hash.replace('#', '');
-  return (VALID_TABS as string[]).includes(hash) ? (hash as NavigationTab) : 'solutions';
+  if (hash === '') return 'solutions';
+  // Bug fix: an unrecognized hash used to silently fall back to
+  // 'solutions', which made NotFoundView unreachable dead code and meant
+  // a mistyped/old link never showed a real 404. Returning null here
+  // lets App render NotFoundView and mark the page noindex (see seo.ts).
+  return (VALID_TABS as string[]).includes(hash) ? (hash as NavigationTab) : null;
 }
 
 export default function App() {
   // SEO fix: honour a deep-link hash on first load (e.g. /#ai-services from
   // the sitemap or a shared link) instead of always defaulting to 'solutions'.
-  const [activeTab, setActiveTab] = useState<NavigationTab>(() => tabFromHash());
+  const [activeTab, setActiveTab] = useState<NavigationTab | null>(() => tabFromHash());
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [isArchitectureOpen, setIsArchitectureOpen] = useState(false);
   const [isTelemetryOpen, setIsTelemetryOpen] = useState(false);
@@ -162,7 +167,7 @@ export default function App() {
           <TermsOfServiceView onBack={() => navigate('solutions')} />
         )}
 
-        {!VALID_TABS.includes(activeTab) && (
+        {activeTab === null && (
           <NotFoundView onGoHome={() => navigate('solutions')} />
         )}
       </main>
