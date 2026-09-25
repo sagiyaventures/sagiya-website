@@ -84,7 +84,12 @@ export const ArchitectureModal: React.FC<ArchitectureModalProps> = ({ isOpen, on
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="font-headline text-xs font-bold text-[#006400]/50">{s.step}</span>
+                  {/* Accessibility fix: same reasoning as InteractiveTopology.tsx - this
+                    faint step number is decorative, sits right beside the real
+                    step title, and measures well under WCAG AA contrast at this
+                    opacity (~2.5:1 on white). Marked aria-hidden instead of
+                    darkened, to keep the intended subtle look. */}
+                  <span className="font-headline text-xs font-bold text-[#006400]/50" aria-hidden="true">{s.step}</span>
                   <h4 className="font-headline text-base font-bold text-[#2c160e]">{s.title}</h4>
                 </div>
                 <p className="font-body text-sm text-[#404a3b] leading-relaxed">{s.description}</p>
