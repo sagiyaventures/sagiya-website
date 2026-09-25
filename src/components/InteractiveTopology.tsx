@@ -69,14 +69,17 @@ export const InteractiveTopology: React.FC<InteractiveTopologyProps> = ({ onOpen
             <div className={`w-14 h-14 rounded-xl ${step.color} flex items-center justify-center text-[#006400] mb-5 group-hover:scale-105 transition-transform`}>
               {step.icon}
             </div>
-            {/* Accessibility fix: this is a decorative "ghost number" behind the real
-                heading right below it - Lighthouse flagged it for contrast
-                since it's genuinely faint text-on-white by design. It adds no
-                information a screen reader user doesn't already get from the
-                step's real heading + natural reading order, so it's marked
-                aria-hidden rather than darkened (darkening would defeat the
-                intended subtle/decorative look). */}
-            <div className="font-headline text-3xl font-bold text-[#006400]/20 mb-2" aria-hidden="true">{step.step}</div>
+            {/* Accessibility fix: this is a decorative "ghost number" behind the
+                real heading right below it - Lighthouse's contrast check
+                flagged it at /20 opacity (~1.4:1 on white). aria-hidden is
+                kept because the number is redundant with the real heading
+                for screen readers, but that alone does NOT satisfy the
+                contrast audit - it's a pixel-level check, not an
+                accessibility-tree one. Bumped to /65 (~3.4:1), which clears
+                the large-bold-text AA threshold (3:1 at this size/weight)
+                with margin, while still reading as clearly lighter than the
+                heading text under it. */}
+            <div className="font-headline text-3xl font-bold text-[#006400]/65 mb-2" aria-hidden="true">{step.step}</div>
             <h3 className="font-headline text-lg font-bold text-[#2c160e] mb-2">{step.title}</h3>
             <p className="font-body text-sm text-[#404a3b] leading-relaxed">{step.description}</p>
             {i < steps.length - 1 && (
