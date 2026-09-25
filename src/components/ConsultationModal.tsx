@@ -261,15 +261,15 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
             </p>
             <div className="bg-[#fff8f6] border border-[#004900]/15 rounded-xl p-5 text-left max-w-sm mx-auto mb-8 text-xs font-label space-y-2">
               <div className="flex justify-between">
-                <span className="text-[#707a6a]">Contact:</span>
+                <span className="text-[#55604f]">Contact:</span>
                 <span className="font-bold text-[#2c160e]">Sagiya Ventures Team</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#707a6a]">Email:</span>
+                <span className="text-[#55604f]">Email:</span>
                 <span className="font-bold text-[#006400]">sagiyaventures@gmail.com</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#707a6a]">Typical Response:</span>
+                <span className="text-[#55604f]">Typical Response:</span>
                 <span className="font-bold text-[#2c160e]">1-2 Business Days</span>
               </div>
             </div>

@@ -70,7 +70,7 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({ onOpenConsultation }) 
             <div className="font-label text-xs text-[#006400] font-semibold tracking-wider uppercase mt-1">
               AI &amp; Software Solutions
             </div>
-            <div className="mt-4 pt-4 border-t border-stone-100 max-w-xs text-xs font-label text-[#707a6a]">
+            <div className="mt-4 pt-4 border-t border-stone-100 max-w-xs text-xs font-label text-[#55604f]">
               Incorporated in India · Private Limited Company
             </div>
           </div>
@@ -124,8 +124,8 @@ export const AboutUsView: React.FC<AboutUsViewProps> = ({ onOpenConsultation }) 
               <span className="font-headline text-lg font-bold text-[#2c160e]">Tamil Nadu, India</span>
             </div>
             <div className="font-label text-sm text-[#006400] font-semibold mb-1">Registered Office</div>
-            <div className="font-body text-sm text-[#707a6a]">Sagiya Ventures Private Limited</div>
-            <div className="font-body text-sm text-[#707a6a]">Tamil Nadu, India</div>
+            <div className="font-body text-sm text-[#55604f]">Sagiya Ventures Private Limited</div>
+            <div className="font-body text-sm text-[#55604f]">Tamil Nadu, India</div>
             <div className="mt-4 pt-4 border-t border-stone-100">
               <button
                 onClick={onOpenConsultation}

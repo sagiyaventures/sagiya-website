@@ -26,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab, onOpenConsultatio
             <p className="font-body text-sm text-[#404a3b] max-w-xs leading-relaxed">
               AI &amp; Software Solutions company building practical, impactful technology for businesses and public institutions across India.
             </p>
-            <p className="font-label text-xs text-[#707a6a]">
+            <p className="font-label text-xs text-[#55604f]">
               Sagiya Ventures Private Limited<br />
               Tamil Nadu, India<br />
               <a href="tel:+919790097716" className="hover:text-[#006400] transition-colors">
@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab, onOpenConsultatio
 
           {/* Quick Links */}
           <div>
-            <div className="font-label text-xs uppercase tracking-widest text-[#707a6a] font-semibold mb-4">
+            <div className="font-label text-xs uppercase tracking-widest text-[#55604f] font-semibold mb-4">
               Company
             </div>
             <div className="flex flex-col gap-2">
@@ -73,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab, onOpenConsultatio
 
           {/* Contact */}
           <div>
-            <div className="font-label text-xs uppercase tracking-widest text-[#707a6a] font-semibold mb-4">
+            <div className="font-label text-xs uppercase tracking-widest text-[#55604f] font-semibold mb-4">
               Get in Touch
             </div>
             <p className="font-body text-sm text-[#404a3b] mb-4 leading-relaxed">
@@ -96,25 +96,25 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab, onOpenConsultatio
 
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-[#004900]/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-body text-xs text-[#707a6a]">
+          <p className="font-body text-xs text-[#55604f]">
             &copy; 2026 Sagiya Ventures Private Limited. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <button
               onClick={() => onNavigateTab?.('privacy-policy')}
-              className="font-label text-xs text-[#707a6a] hover:text-[#006400] transition-colors"
+              className="font-label text-xs text-[#55604f] hover:text-[#006400] transition-colors"
             >
               Privacy Policy
             </button>
             <span className="text-[#c8d4c2]">·</span>
             <button
               onClick={() => onNavigateTab?.('terms-of-service')}
-              className="font-label text-xs text-[#707a6a] hover:text-[#006400] transition-colors"
+              className="font-label text-xs text-[#55604f] hover:text-[#006400] transition-colors"
             >
               Terms of Service
             </button>
             <span className="text-[#c8d4c2]">·</span>
-            <p className="font-label text-xs text-[#707a6a]">
+            <p className="font-label text-xs text-[#55604f]">
               Made with ❤️ in Tamil Nadu, India
             </p>
           </div>

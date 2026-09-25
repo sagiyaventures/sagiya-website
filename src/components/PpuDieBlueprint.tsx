@@ -19,8 +19,8 @@ export const PpuDieBlueprint: React.FC<PpuDieBlueprintProps> = ({ onExpand }) =>
           <span className="font-mono text-[#006400] font-semibold tracking-wider">
             OPTICAL DIE SIMULATOR
           </span>
-          <span className="text-[#707a6a]/50 hidden sm:inline">|</span>
-          <span className="text-[#707a6a] hidden sm:inline font-mono">220nm SOI PDK</span>
+          <span className="text-[#55604f]/50 hidden sm:inline">|</span>
+          <span className="text-[#55604f] hidden sm:inline font-mono">220nm SOI PDK</span>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -28,7 +28,7 @@ export const PpuDieBlueprint: React.FC<PpuDieBlueprintProps> = ({ onExpand }) =>
             className={`px-2 py-0.5 rounded text-[11px] font-mono transition-colors border ${
               activeLaserAnimation
                 ? 'bg-[#006400]/10 text-[#006400] border-[#006400]/30'
-                : 'bg-[#004900]/5 text-[#707a6a] border-[#004900]/10'
+                : 'bg-[#004900]/5 text-[#55604f] border-[#004900]/10'
             }`}
             title="Toggle beam animation"
           >
@@ -37,7 +37,7 @@ export const PpuDieBlueprint: React.FC<PpuDieBlueprintProps> = ({ onExpand }) =>
           {onExpand && (
             <button
               onClick={onExpand}
-              className="text-[#707a6a] hover:text-[#006400] transition-colors p-1 rounded hover:bg-[#006400]/10"
+              className="text-[#55604f] hover:text-[#006400] transition-colors p-1 rounded hover:bg-[#006400]/10"
               title="Jump to simulated telemetry"
               aria-label="Jump to simulated telemetry"
             >
@@ -64,7 +64,7 @@ export const PpuDieBlueprint: React.FC<PpuDieBlueprintProps> = ({ onExpand }) =>
           </div>
           <div className="w-12 h-0.5 bg-[#006400]/40 mt-0.5" />
         </div>
-        <div className="absolute bottom-2 right-4 text-[9px] font-mono text-[#707a6a]/70 pointer-events-none text-right">
+        <div className="absolute bottom-2 right-4 text-[9px] font-mono text-[#55604f]/70 pointer-events-none text-right">
           220nm SOI · Simulation Model
         </div>
 
@@ -223,13 +223,13 @@ export const PpuDieBlueprint: React.FC<PpuDieBlueprintProps> = ({ onExpand }) =>
                   {selectedProbe.label}
                 </h4>
               </div>
-              <button onClick={() => setSelectedProbe(null)} className="text-[#707a6a] hover:text-[#2c160e] p-1 rounded hover:bg-[#004900]/10 text-xs">✕</button>
+              <button onClick={() => setSelectedProbe(null)} className="text-[#55604f] hover:text-[#2c160e] p-1 rounded hover:bg-[#004900]/10 text-xs">✕</button>
             </div>
             <p className="text-xs text-[#404a3b] mt-1.5 leading-relaxed font-body">{selectedProbe.description}</p>
             <div className="grid grid-cols-2 gap-2 mt-2.5 pt-2 border-t border-[#004900]/10 font-mono text-[11px]">
               {Object.entries(selectedProbe.specs).map(([key, val]) => (
                 <div key={key} className="flex justify-between bg-[#fff1ed] px-2 py-1 rounded">
-                  <span className="text-[#707a6a]">{key}:</span>
+                  <span className="text-[#55604f]">{key}:</span>
                   <span className="text-[#006400] font-semibold">{val}</span>
                 </div>
               ))}

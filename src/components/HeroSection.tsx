@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import heroAI from '../assets/hero-ai.png';
+import heroAI from '../assets/hero-ai.webp';
 
 interface HeroSectionProps {
   onConsult: () => void;
@@ -44,15 +44,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onConsult, onViewArchi
           <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#004900]/10 max-w-lg">
             <div>
               <div className="font-headline text-xl font-bold text-[#006400]">AI-First</div>
-              <div className="font-label text-xs text-[#707a6a] uppercase tracking-wider mt-1">Engineering</div>
+              <div className="font-label text-xs text-[#55604f] uppercase tracking-wider mt-1">Engineering</div>
             </div>
             <div>
               <div className="font-headline text-xl font-bold text-[#006400]">Scalable</div>
-              <div className="font-label text-xs text-[#707a6a] uppercase tracking-wider mt-1">Architecture</div>
+              <div className="font-label text-xs text-[#55604f] uppercase tracking-wider mt-1">Architecture</div>
             </div>
             <div>
               <div className="font-headline text-xl font-bold text-[#006400]">Secure</div>
-              <div className="font-label text-xs text-[#707a6a] uppercase tracking-wider mt-1">By Design</div>
+              <div className="font-label text-xs text-[#55604f] uppercase tracking-wider mt-1">By Design</div>
             </div>
           </div>
         </div>
@@ -64,7 +64,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onConsult, onViewArchi
               src={heroAI}
               alt="Sagiya AI Platform — Intelligent Infrastructure"
               className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
+              // Perf fix: this is the above-the-fold hero image (the page's LCP
+              // element) - it was previously loading="lazy", which actively
+              // delays the Largest Contentful Paint instead of helping it.
+              // fetchPriority hints the browser to fetch it before other assets.
+              loading="eager"
+              fetchPriority="high"
               width={720}
               height={360}
             />

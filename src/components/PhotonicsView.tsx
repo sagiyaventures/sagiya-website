@@ -98,7 +98,7 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
             </div>
             <div className="absolute -z-10 inset-0 bg-gradient-to-tr from-[#ffe2da] to-transparent rounded-full blur-3xl opacity-50 scale-110 translate-x-8 translate-y-8 pointer-events-none" />
           </div>
-          <p className="font-label text-[10px] text-[#707a6a] text-center mt-2 tracking-wide uppercase">
+          <p className="font-label text-[10px] text-[#55604f] text-center mt-2 tracking-wide uppercase">
             Design Concept Render — Pre-Silicon
           </p>
         </div>
@@ -159,7 +159,7 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
                   <Icon className="w-5 h-5" />
                 </div>
                 <div className="font-headline text-2xl md:text-3xl font-bold mb-1 text-[#2c160e]">{m.value}</div>
-                <div className="font-label text-[11px] text-[#707a6a] leading-snug">{m.label}</div>
+                <div className="font-label text-[11px] text-[#55604f] leading-snug">{m.label}</div>
                 <p className="font-body text-xs text-[#404a3b] mt-3 pt-3 border-t border-[#004900]/10">{m.description}</p>
                 <div className="font-label text-[10px] text-[#006400] mt-2 uppercase tracking-wider font-semibold">{m.tag}</div>
               </div>
@@ -215,7 +215,7 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
                   }`}
                 >
                   <div>
-                    <span className={`font-mono text-xs font-bold block mb-1 ${step.highlight ? 'text-white/60' : 'text-[#707a6a]'}`}>{step.n}</span>
+                    <span className={`font-mono text-xs font-bold block mb-1 ${step.highlight ? 'text-white/60' : 'text-[#55604f]'}`}>{step.n}</span>
                     <h4 className={`font-headline text-sm font-bold ${step.highlight ? 'text-white' : 'text-[#2c160e]'}`}>{step.title}</h4>
                   </div>
                   <span className={`text-[11px] font-body ${step.highlight ? 'text-white/80' : 'text-[#404a3b]'}`}>{step.sub}</span>
@@ -255,20 +255,20 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
                 <p className="font-body text-sm text-[#404a3b] leading-relaxed">{v.description}</p>
                 <div className="space-y-2.5 pt-3 border-t border-[#004900]/10 font-body text-sm">
                   <div className="flex items-center justify-between">
-                    <span className="text-[#707a6a]">Matrix</span>
+                    <span className="text-[#55604f]">Matrix</span>
                     <span className="font-semibold text-[#2c160e] font-mono text-xs">{v.specs.matrixArchitecture}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[#707a6a]">MZI Count</span>
+                    <span className="text-[#55604f]">MZI Count</span>
                     <span className="font-semibold text-[#2c160e] font-mono text-xs">{v.specs.mziCount}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[#707a6a]">Die Area</span>
+                    <span className="text-[#55604f]">Die Area</span>
                     <span className="font-semibold text-[#2c160e] font-mono text-xs">{v.specs.dieFootprint}</span>
                   </div>
                 </div>
               </div>
-              <div className={`px-8 py-3 border-t text-xs font-label font-semibold ${v.isPrimary ? 'bg-[#fff8f6] border-[#006400]/20 text-[#006400]' : 'bg-[#fafaf8] border-[#004900]/10 text-[#707a6a]'}`}>
+              <div className={`px-8 py-3 border-t text-xs font-label font-semibold ${v.isPrimary ? 'bg-[#fff8f6] border-[#006400]/20 text-[#006400]' : 'bg-[#fafaf8] border-[#004900]/10 text-[#55604f]'}`}>
                 {v.classification}
               </div>
             </div>
@@ -300,13 +300,13 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
                   className={`h-full rounded-full ${row.highlight ? 'bg-gradient-to-r from-[#006400] to-[#3a9d3a]' : 'bg-[#bfcab7]'}`}
                 />
               </div>
-              <div className={`w-20 shrink-0 text-right font-label text-sm ${row.highlight ? 'text-[#006400] font-semibold' : 'text-[#707a6a]'}`}>
+              <div className={`w-20 shrink-0 text-right font-label text-sm ${row.highlight ? 'text-[#006400] font-semibold' : 'text-[#55604f]'}`}>
                 {row.display}{row.highlight && ' ✅'}
               </div>
             </div>
           ))}
         </div>
-        <p className="font-label text-[11px] text-[#707a6a] text-center mt-6">
+        <p className="font-label text-[11px] text-[#55604f] text-center mt-6">
           TOPS/W shown above (higher is more power-efficient). Standard electronic benchmarks are
           compiled from manufacturer-published specs at standard TDP limits.
         </p>
@@ -349,7 +349,7 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
                   <h4 className="font-headline text-sm font-bold text-[#2c160e]">{item.title}</h4>
-                  <span className="font-label text-[10px] font-bold tracking-wider uppercase bg-[#fff8f6] text-[#707a6a] border border-[#004900]/10 px-2 py-0.5 rounded">
+                  <span className="font-label text-[10px] font-bold tracking-wider uppercase bg-[#fff8f6] text-[#55604f] border border-[#004900]/10 px-2 py-0.5 rounded">
                     {item.badge}
                   </span>
                 </div>

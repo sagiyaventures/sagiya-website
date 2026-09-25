@@ -101,7 +101,7 @@ export const CaseStudiesView: React.FC<CaseStudiesViewProps> = ({ onOpenConsulta
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
         {/* Left: Project List */}
         <div className="lg:col-span-4 space-y-3">
-          <div className="text-xs font-label uppercase tracking-widest text-[#707a6a] font-semibold px-1 mb-2">
+          <div className="text-xs font-label uppercase tracking-widest text-[#55604f] font-semibold px-1 mb-2">
             Projects
           </div>
           {projects.map((project) => {
@@ -146,7 +146,7 @@ export const CaseStudiesView: React.FC<CaseStudiesViewProps> = ({ onOpenConsulta
                 {statusIcon[selected.status]}
                 {statusConfig[selected.status].label}
               </span>
-              <span className="font-label text-xs text-[#707a6a] uppercase tracking-wider">
+              <span className="font-label text-xs text-[#55604f] uppercase tracking-wider">
                 {selected.sector}
               </span>
             </div>
