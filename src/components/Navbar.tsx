@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavigationTab } from '../types';
 import { Menu, X, ArrowRight } from 'lucide-react';
-import sagiyaLogo from '../assets/sagiya-logo.jpeg';
+import sagiyaLogo from '../assets/sagiya-logo.webp';
 
 interface NavbarProps {
   // null when on the 404 state (unrecognized hash) - no nav item should look active then

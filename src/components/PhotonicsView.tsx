@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Cpu, Zap, Gauge, ShieldCheck, ArrowDown, ChevronDown, CheckCircle2, FileText, Factory, Mail } from 'lucide-react';
 import { PpuDieBlueprint } from './PpuDieBlueprint';
-import photonicsCardImg from '../assets/photonics-card.jpg';
+import photonicsCardImg from '../assets/photonics-card.webp';
 import {
   TELEMETRY_METRICS,
   CHIP_VARIANTS,
@@ -90,7 +90,11 @@ export const PhotonicsView: React.FC<PhotonicsViewProps> = ({ onOpenConsultation
                 src={photonicsCardImg}
                 alt="Sagiya Photonics PPU accelerator card — design concept render"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
+                // Perf fix: same issue as the homepage hero image - this is the
+                // above-the-fold image on the Photonics tab (its LCP element),
+                // so lazy-loading it works against paint time instead of for it.
+                loading="eager"
+                fetchPriority="high"
                 width={720}
                 height={360}
               />

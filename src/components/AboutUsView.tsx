@@ -1,6 +1,6 @@
 import React from 'react';
 import { Shield, Target, Compass, MapPin, Mail, Phone } from 'lucide-react';
-import sagiyaLogo from '../assets/sagiya-logo.jpeg';
+import sagiyaLogo from '../assets/sagiya-logo.webp';
 
 interface AboutUsViewProps {
   onOpenConsultation: () => void;

@@ -1,0 +1,24 @@
+# Sagiya Ventures
+
+> Sagiya Ventures is an AI and software solutions company based in Tamil Nadu, India, building practical AI and automation for government and enterprise clients — validated through real pilots, not slideware.
+
+## Company
+
+- [Home](https://www.sagiyaventures.com/): Overview of Sagiya Ventures' AI and software solutions.
+- [About Us](https://www.sagiyaventures.com/#about): Company background and mission.
+- [Case Studies](https://www.sagiyaventures.com/#case-studies): Pilot projects, including AI-powered transport optimization for Tamil Nadu State Transport Corporation (TNSTC).
+
+## Services
+
+- [AI Services](https://www.sagiyaventures.com/#ai-services): Custom AI model development, data analytics, workflow automation, and computer vision/document intelligence.
+- [Technology Stack](https://www.sagiyaventures.com/#infrastructure): The technology infrastructure used to build AI and software solutions.
+- [Sagiya Photonics](https://www.sagiyaventures.com/#photonics): R&D initiative developing a Photonic Processing Unit (PPU) for light-speed AI inference.
+
+## Contact
+
+- [Get in Touch](https://www.sagiyaventures.com/): Use the "Discuss a Project" form on the site to reach Sagiya Ventures for an AI/software consultation.
+
+## Optional
+
+- [Privacy Policy](https://www.sagiyaventures.com/#privacy-policy): How Sagiya Ventures collects, uses, and protects visitor information.
+- [Terms of Service](https://www.sagiyaventures.com/#terms-of-service): Terms and conditions for using the site.

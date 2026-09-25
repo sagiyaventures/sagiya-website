@@ -1,6 +1,6 @@
 import React from 'react';
 import { Linkedin } from 'lucide-react';
-import sagiyaLogo from '../assets/sagiya-logo.jpeg';
+import sagiyaLogo from '../assets/sagiya-logo.webp';
 
 interface FooterProps {
   onNavigateTab?: (tab: any) => void;
