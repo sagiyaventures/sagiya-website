@@ -23,6 +23,7 @@ import { PrivacyPolicyView } from './components/PrivacyPolicyView';
 import { TermsOfServiceView } from './components/TermsOfServiceView';
 import { CookieConsent } from './components/CookieConsent';
 import { loadGoogleAnalytics } from './analytics';
+import { applySeoForTab } from './seo';
 
 const VALID_TABS: NavigationTab[] = [
   'solutions',
@@ -68,6 +69,12 @@ export default function App() {
       window.removeEventListener('popstate', onHashOrPopState);
     };
   }, []);
+
+  // SEO: give each section its own title/description/canonical instead of
+  // reusing the homepage's for every tab (see src/seo.ts).
+  useEffect(() => {
+    applySeoForTab(activeTab);
+  }, [activeTab]);
 
   // Privacy: only load Google Analytics if the visitor already accepted
   // the cookie notice on a previous visit (see CookieConsent.tsx).
